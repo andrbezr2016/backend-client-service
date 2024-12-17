@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  name: backend-client-service
+springdoc:
+  swagger-ui:
+    path: swagger-ui.html
+logging:
+  level:
+    root: INFO
+backend-client:
+  products-service-url: http://localhost:8081
+  tariffs-service-url: http://localhost:8082
