@@ -1,0 +1,26 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    hostname: postgres
+    ports:
+      - '5555:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_DB=products,tariffs
+    volumes:
+      - ./init-multiple-databases.sh:/docker-entrypoint-initdb.d/init-multiple-databases.sh
+      - postgresql_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - my-network
+
+volumes:
+  postgresql_data:
+    driver: local
+
+networks:
+  my-network:
+    driver: bridge
