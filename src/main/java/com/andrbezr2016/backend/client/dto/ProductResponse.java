@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 @Builder
 @ToString
-public class Product {
+public class ProductResponse {
 
     private UUID id;
     private String name;
@@ -20,7 +20,7 @@ public class Product {
     private OffsetDateTime startDate;
     private OffsetDateTime endDate;
     private String description;
-    private UUID tariff;
+    private TariffResponse tariff;
     private UUID author;
     private Long version;
 

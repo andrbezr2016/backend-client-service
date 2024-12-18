@@ -3,9 +3,12 @@ package com.andrbezr2016.backend.client.client;
 import com.andrbezr2016.backend.client.dto.Tariff;
 import com.andrbezr2016.backend.client.dto.TariffRequest;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collection;
 import java.util.UUID;
 
 @Component
@@ -15,6 +18,15 @@ public class TariffsServiceClient {
 
     public TariffsServiceClient(@Qualifier("tariffsServiceRestTemplate") RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
+    }
+
+    public Tariff getTariff(UUID id) {
+        return restTemplate.getForObject("/tariff/{id}", Tariff.class, id);
+    }
+
+    public Collection<Tariff> getTariffs(Collection<UUID> ids) {
+        return restTemplate.exchange("/tariff/getAllByIds?ids={ids}", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Tariff>>() {
+        }, ids).getBody();
     }
 
     public Tariff createTariff(TariffRequest tariffRequest) {

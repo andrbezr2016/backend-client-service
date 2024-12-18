@@ -12,19 +12,13 @@ import java.util.UUID;
 @Getter
 @Builder
 @ToString
-public class Product {
+public class TariffResponse {
 
     private UUID id;
     private String name;
-    private ProductType type;
     private OffsetDateTime startDate;
     private OffsetDateTime endDate;
     private String description;
-    private UUID tariff;
-    private UUID author;
+    private UUID product;
     private Long version;
-
-    public enum ProductType {
-        LOAN, CARD
-    }
 }
