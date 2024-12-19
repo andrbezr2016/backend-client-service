@@ -20,8 +20,8 @@ public class TariffsServiceClient {
         this.restTemplate = restTemplate;
     }
 
-    public Tariff getTariff(UUID id) {
-        return restTemplate.getForObject("/tariff/{id}", Tariff.class, id);
+    public Tariff getTariff(UUID id, Long version) {
+        return restTemplate.getForObject("/tariff/{id}?version={version}", Tariff.class, id, version);
     }
 
     public Collection<Tariff> getTariffs(Collection<UUID> ids) {

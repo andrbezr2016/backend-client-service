@@ -11,9 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -30,13 +31,9 @@ public class ProductService {
 
     public Collection<ProductResponse> getPreviousVersions(UUID id) {
         Collection<Product> productCollection = productsServiceClient.getPreviousVersions(id);
-        Map<UUID, Product> productMap = productCollection.stream().filter(product -> product.getTariff() != null).collect(Collectors.toMap(Product::getTariff, Function.identity()));
-        Collection<Tariff> tariffCollection = tariffsServiceClient.getTariffs(productMap.keySet());
-        Map<UUID, Tariff> tariffMap = tariffCollection.stream().collect(Collectors.toMap(Tariff::getProduct, Function.identity()));
         List<ProductResponse> productResponseList = new ArrayList<>();
-        for (Product product : productMap.values()) {
-            Tariff tariff = tariffMap.get(product.getId());
-            ProductResponse productResponse = productMapper.toResponse(product, tariff);
+        for (Product product : productCollection) {
+            ProductResponse productResponse = productMapper.toResponse(product, getTariffByProduct(product));
             productResponseList.add(productResponse);
         }
         return productResponseList;
@@ -64,7 +61,7 @@ public class ProductService {
     private Tariff getTariffByProduct(Product product) {
         Tariff tariff = null;
         if (product.getTariff() != null) {
-            tariff = tariffsServiceClient.getTariff(product.getTariff());
+            tariff = tariffsServiceClient.getTariff(product.getTariff(), product.getTariffVersion());
         }
         return tariff;
     }
