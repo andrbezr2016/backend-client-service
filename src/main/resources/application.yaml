@@ -8,6 +8,7 @@ springdoc:
 logging:
   level:
     root: INFO
-backend-client:
-  products-service-url: http://localhost:8081
-  tariffs-service-url: http://localhost:8082
+backend-client-service:
+  client:
+    products-service-url: http://localhost:8081
+    tariffs-service-url: http://localhost:8082

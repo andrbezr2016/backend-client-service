@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.bind.ConstructorBinding;
 
 @Getter
-@ConfigurationProperties("backend-client")
+@ConfigurationProperties("backend-client-service.client")
 public class ClientProperties {
 
     @ConstructorBinding
