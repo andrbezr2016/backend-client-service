@@ -60,7 +60,7 @@ public class ProductService {
 
     private Tariff getTariffByProduct(Product product) {
         Tariff tariff = null;
-        if (product.getTariff() != null) {
+        if (product != null && product.getTariff() != null) {
             tariff = tariffsServiceClient.getTariff(product.getTariff(), product.getTariffVersion());
         }
         return tariff;

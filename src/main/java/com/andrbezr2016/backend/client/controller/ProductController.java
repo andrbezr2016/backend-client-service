@@ -32,7 +32,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}/getVersionForDate")
-    public ProductResponse getVersionForDate(@PathVariable("id") UUID id, @RequestParam("dateTime") OffsetDateTime date) {
+    public ProductResponse getVersionForDate(@PathVariable("id") UUID id, @RequestParam("date") OffsetDateTime date) {
         log.info("Get version of product with id: {} for date: {}", id, date);
         return productService.getVersionForDate(id, date);
     }
