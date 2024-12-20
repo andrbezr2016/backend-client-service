@@ -19,7 +19,7 @@ public class BackendClientExceptionHandler {
     }
 
     @ExceptionHandler(ServerException.class)
-    public ResponseEntity<ErrorResponse> serverExceptionHandler(ClientException exception) {
+    public ResponseEntity<ErrorResponse> serverExceptionHandler(ServerException exception) {
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setStatus(exception.getHttpStatus().value());
         errorResponse.setMessage(exception.getMessage());
