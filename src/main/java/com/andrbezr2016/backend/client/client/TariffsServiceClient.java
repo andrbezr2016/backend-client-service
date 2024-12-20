@@ -2,6 +2,8 @@ package com.andrbezr2016.backend.client.client;
 
 import com.andrbezr2016.backend.client.dto.Tariff;
 import com.andrbezr2016.backend.client.dto.TariffRequest;
+import com.andrbezr2016.backend.client.exception.ErrorMessage;
+import com.andrbezr2016.backend.client.exception.ServerException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -21,23 +23,43 @@ public class TariffsServiceClient {
     }
 
     public Tariff getTariff(UUID id, Long version) {
-        return restTemplate.getForObject("/tariff/{id}?version={version}", Tariff.class, id, version);
+        try {
+            return restTemplate.getForObject("/tariff/{id}?version={version}", Tariff.class, id, version);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public Collection<Tariff> getTariffs(Collection<UUID> ids) {
-        return restTemplate.exchange("/tariff/getAllByIds?ids={ids}", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Tariff>>() {
-        }, ids).getBody();
+        try {
+            return restTemplate.exchange("/tariff/getAllByIds?ids={ids}", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Tariff>>() {
+            }, ids).getBody();
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public Tariff createTariff(TariffRequest tariffRequest) {
-        return restTemplate.postForObject("/tariff/create", tariffRequest, Tariff.class);
+        try {
+            return restTemplate.postForObject("/tariff/create", tariffRequest, Tariff.class);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public Tariff updateTariff(UUID id, TariffRequest tariffRequest) {
-        return restTemplate.patchForObject("/tariff/{id}/update", tariffRequest, Tariff.class, id);
+        try {
+            return restTemplate.patchForObject("/tariff/{id}/update", tariffRequest, Tariff.class, id);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public void deleteTariff(UUID id) {
-        restTemplate.delete("/tariff/{id}/delete", id);
+        try {
+            restTemplate.delete("/tariff/{id}/delete", id);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 }

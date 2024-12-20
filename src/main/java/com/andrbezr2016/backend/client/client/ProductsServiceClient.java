@@ -2,6 +2,8 @@ package com.andrbezr2016.backend.client.client;
 
 import com.andrbezr2016.backend.client.dto.Product;
 import com.andrbezr2016.backend.client.dto.ProductRequest;
+import com.andrbezr2016.backend.client.exception.ErrorMessage;
+import com.andrbezr2016.backend.client.exception.ServerException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -22,27 +24,51 @@ public class ProductsServiceClient {
     }
 
     public Product getCurrentVersion(UUID id) {
-        return restTemplate.getForObject("/product/{id}/getCurrentVersion", Product.class, id);
+        try {
+            return restTemplate.getForObject("/product/{id}/getCurrentVersion", Product.class, id);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public Collection<Product> getPreviousVersions(UUID id) {
-        return restTemplate.exchange("/product/{id}/getPreviousVersions", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Product>>() {
-        }, id).getBody();
+        try {
+            return restTemplate.exchange("/product/{id}/getPreviousVersions", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Product>>() {
+            }, id).getBody();
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public Product getVersionForDate(UUID id, OffsetDateTime date) {
-        return restTemplate.getForObject("/product/{id}/getVersionForDate?date={date}", Product.class, id, date);
+        try {
+            return restTemplate.getForObject("/product/{id}/getVersionForDate?date={date}", Product.class, id, date);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public Product createProduct(ProductRequest productRequest) {
-        return restTemplate.postForObject("/product/create", productRequest, Product.class);
+        try {
+            return restTemplate.postForObject("/product/create", productRequest, Product.class);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public void deleteProduct(UUID id) {
-        restTemplate.delete("/product/{id}/delete", id);
+        try {
+            restTemplate.delete("/product/{id}/delete", id);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 
     public Product rollBackVersion(UUID id) {
-        return restTemplate.patchForObject("/product/{id}/rollBackVersion", null, Product.class, id);
+        try {
+            return restTemplate.patchForObject("/product/{id}/rollBackVersion", null, Product.class, id);
+        } catch (Exception exception) {
+            throw new ServerException(ErrorMessage.SOMETHING_WRONG);
+        }
     }
 }
