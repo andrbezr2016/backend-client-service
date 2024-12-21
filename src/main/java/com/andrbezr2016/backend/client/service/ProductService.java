@@ -10,7 +10,7 @@ import com.andrbezr2016.backend.client.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -39,7 +39,7 @@ public class ProductService {
         return productResponseList;
     }
 
-    public ProductResponse getVersionForDate(UUID id, OffsetDateTime date) {
+    public ProductResponse getVersionForDate(UUID id, LocalDateTime date) {
         Product product = productsServiceClient.getVersionForDate(id, date);
         return productMapper.toResponse(product, getTariffByProduct(product));
     }
