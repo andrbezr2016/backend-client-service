@@ -26,7 +26,7 @@ public class TariffsServiceClient {
         try {
             return restTemplate.getForObject("/tariff/{id}?version={version}", Tariff.class, id, version);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
@@ -35,7 +35,7 @@ public class TariffsServiceClient {
             return restTemplate.exchange("/tariff/getAllByIds?ids={ids}", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Tariff>>() {
             }, ids).getBody();
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
@@ -43,7 +43,7 @@ public class TariffsServiceClient {
         try {
             return restTemplate.postForObject("/tariff/create", tariffRequest, Tariff.class);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
@@ -51,7 +51,7 @@ public class TariffsServiceClient {
         try {
             return restTemplate.patchForObject("/tariff/{id}/update", tariffRequest, Tariff.class, id);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
@@ -59,7 +59,7 @@ public class TariffsServiceClient {
         try {
             restTemplate.delete("/tariff/{id}/delete", id);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 }

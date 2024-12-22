@@ -10,7 +10,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -27,7 +27,7 @@ public class ProductsServiceClient {
         try {
             return restTemplate.getForObject("/product/{id}/getCurrentVersion", Product.class, id);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
@@ -36,15 +36,15 @@ public class ProductsServiceClient {
             return restTemplate.exchange("/product/{id}/getPreviousVersions", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Product>>() {
             }, id).getBody();
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
-    public Product getVersionForDate(UUID id, LocalDateTime date) {
+    public Product getVersionForDate(UUID id, OffsetDateTime date) {
         try {
             return restTemplate.getForObject("/product/{id}/getVersionForDate?date={date}", Product.class, id, date);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
@@ -52,7 +52,7 @@ public class ProductsServiceClient {
         try {
             return restTemplate.postForObject("/product/create", productRequest, Product.class);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
@@ -60,7 +60,7 @@ public class ProductsServiceClient {
         try {
             restTemplate.delete("/product/{id}/delete", id);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 
@@ -68,7 +68,7 @@ public class ProductsServiceClient {
         try {
             return restTemplate.patchForObject("/product/{id}/rollBackVersion", null, Product.class, id);
         } catch (Exception exception) {
-            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL, exception);
+            throw new ServerException(ErrorMessage.PROBLEM_WITH_INTERNAL);
         }
     }
 }

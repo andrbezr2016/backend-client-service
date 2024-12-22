@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -32,7 +32,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}/getVersionForDate")
-    public ProductResponse getVersionForDate(@PathVariable("id") UUID id, @RequestParam("date") LocalDateTime date) {
+    public ProductResponse getVersionForDate(@PathVariable("id") UUID id, @RequestParam("date") OffsetDateTime date) {
         log.info("Get version of product with id: {} for date: {}", id, date);
         return productService.getVersionForDate(id, date);
     }
