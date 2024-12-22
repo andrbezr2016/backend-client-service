@@ -10,7 +10,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -40,7 +40,7 @@ public class ProductsServiceClient {
         }
     }
 
-    public Product getVersionForDate(UUID id, OffsetDateTime date) {
+    public Product getVersionForDate(UUID id, LocalDateTime date) {
         try {
             return restTemplate.getForObject("/product/{id}/getVersionForDate?date={date}", Product.class, id, date);
         } catch (Exception exception) {
