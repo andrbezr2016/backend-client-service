@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class BackendClientExceptionHandler {
 
     @ExceptionHandler(ClientException.class)
-    public ResponseEntity<ErrorResponse> clientExceptionHandler(ClientException exception) {
+    public ResponseEntity<ErrorResponse> handleClientException(ClientException exception) {
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setStatus(exception.getHttpStatus().value());
         errorResponse.setMessage(exception.getMessage());
-        log.error(errorResponse.toString(), exception);
+        log.error(errorResponse.toString());
         return ResponseEntity.status(exception.getHttpStatus()).body(errorResponse);
     }
 
     @ExceptionHandler(ServerException.class)
-    public ResponseEntity<ErrorResponse> serverExceptionHandler(ServerException exception) {
+    public ResponseEntity<ErrorResponse> handleServerException(ServerException exception) {
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setStatus(exception.getHttpStatus().value());
         errorResponse.setMessage(exception.getMessage());

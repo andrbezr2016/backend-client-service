@@ -8,6 +8,11 @@ public class ClientException extends RuntimeException {
 
     private final HttpStatus httpStatus;
 
+    public ClientException(String errorMessage, Throwable throwable) {
+        super(errorMessage, throwable);
+        this.httpStatus = HttpStatus.BAD_REQUEST;
+    }
+
     public ClientException(ErrorMessage errorMessage) {
         super(errorMessage.getMessage());
         this.httpStatus = HttpStatus.BAD_REQUEST;
