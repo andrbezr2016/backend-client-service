@@ -5,6 +5,7 @@ import com.andrbezr2016.backend.client.dto.ProductResponse;
 import com.andrbezr2016.backend.client.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -38,7 +39,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ProductResponse createProduct(@RequestBody ProductRequest productRequest) {
+    public ProductResponse createProduct(@Validated(ProductRequest.Create.class) @RequestBody ProductRequest productRequest) {
         log.info("Create new product");
         return productService.createProduct(productRequest);
     }
