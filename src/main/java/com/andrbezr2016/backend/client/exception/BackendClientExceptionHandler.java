@@ -14,7 +14,7 @@ public class BackendClientExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setStatus(exception.getHttpStatus().value());
         errorResponse.setMessage(exception.getMessage());
-        log.error(errorResponse.toString(), exception);
+        log.error(errorResponse.toString());
         return ResponseEntity.status(exception.getHttpStatus()).body(errorResponse);
     }
 
