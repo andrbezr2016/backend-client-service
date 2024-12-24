@@ -1,9 +1,6 @@
 package com.andrbezr2016.backend.client.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,19 +9,16 @@ import java.util.UUID;
 @Getter
 @Builder
 @ToString
+@EqualsAndHashCode
 public class ProductResponse {
 
     private UUID id;
     private String name;
-    private ProductType type;
+    private Product.ProductType type;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String description;
     private TariffResponse tariff;
     private UUID author;
     private Long version;
-
-    public enum ProductType {
-        LOAN, CARD
-    }
 }

@@ -1,10 +1,7 @@
 package com.andrbezr2016.backend.client.dto;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -12,6 +9,7 @@ import java.util.UUID;
 @Getter
 @Builder
 @ToString
+@EqualsAndHashCode
 public class ProductRequest {
 
     @NotNull(message = "Name must not be null", groups = {Create.class})
