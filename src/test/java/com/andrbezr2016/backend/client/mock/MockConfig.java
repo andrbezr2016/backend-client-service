@@ -1,4 +1,4 @@
-package com.andrbezr2016.backend.client;
+package com.andrbezr2016.backend.client.mock;
 
 import com.andrbezr2016.backend.client.client.ProductsServiceClient;
 import com.andrbezr2016.backend.client.client.TariffsServiceClient;
