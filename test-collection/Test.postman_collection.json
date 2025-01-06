@@ -2123,7 +2123,7 @@
 			]
 		},
 		{
-			"name": "9 Set Tariff 1 to Product 2",
+			"name": "9 Set and Update Tariff 1 to Product 2",
 			"item": [
 				{
 					"name": "9.1 Set Tariff 1 to Product 2",
@@ -2197,7 +2197,7 @@
 					"response": []
 				},
 				{
-					"name": "9.1 Update Tariff 1",
+					"name": "9.2 Update Tariff 1",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2268,7 +2268,7 @@
 					"response": []
 				},
 				{
-					"name": "9.2 Update Tariff 1",
+					"name": "9.3 Update Tariff 1",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2339,7 +2339,7 @@
 					"response": []
 				},
 				{
-					"name": "9.3 Update Tariff 1",
+					"name": "9.4 Update Tariff 1",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2410,7 +2410,7 @@
 					"response": []
 				},
 				{
-					"name": "9.4 Get Current Version of Product 2",
+					"name": "9.5 Get Current Version of Product 2",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2484,7 +2484,7 @@
 					"response": []
 				},
 				{
-					"name": "9.5 Get Previous Versions of Product 2",
+					"name": "9.6 Get Previous Versions of Product 2",
 					"event": [
 						{
 							"listen": "prerequest",
