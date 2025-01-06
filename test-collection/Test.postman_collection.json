@@ -1,0 +1,2579 @@
+{
+	"info": {
+		"_postman_id": "03456ca7-a7b8-4b8c-a3f4-bba9b57c5792",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40536661"
+	},
+	"item": [
+		{
+			"name": "1 Create Products",
+			"item": [
+				{
+					"name": "1.1 Create Product 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"product1\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"New Product 1\",\r\n  \"type\": \"CARD\",\r\n  \"description\": \"New Product 1 description\",\r\n  \"author\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/product/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1.2 Create Product 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"product2\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"New Product 2\",\r\n  \"type\": \"CARD\",\r\n  \"description\": \"New Product 2 description\",\r\n  \"author\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/product/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2 Create Tariffs",
+			"item": [
+				{
+					"name": "2.1 Create Tariff 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"tariff1\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product2'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product2\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 1\",\r\n    \"description\": \"New Tariff 1 description\",\r\n    \"product\": \"{{product2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.2 Create Tariff 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"tariff2\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to null\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 2\",\r\n    \"description\": \"New Tariff 2 description\",\r\n    \"product\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.3 Get Current Version of Product 1 Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product1}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product1}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.4 Get Current Version of Product 2 Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3 Set Tariff 1 to Product 1",
+			"item": [
+				{
+					"name": "3.1 Set Tariff 1 to Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product1'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product1\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 1\",\r\n    \"description\": \"New Tariff 1 description\",\r\n    \"product\": \"{{product1}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff1}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff1}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.2 Get Current Version of Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product1}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product1}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.3 Get Current Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4 Set Tariff 2 to Product 1",
+			"item": [
+				{
+					"name": "4.1 Set Tariff 2 to Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product1'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product1\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 2\",\r\n    \"description\": \"New Tariff 2 description\",\r\n    \"product\": \"{{product1}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff2}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff2}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.2 Set Tariff 2 to Product 1 [Check idempotency]",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product1'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product1\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 2\",\r\n    \"description\": \"New Tariff 2 description\",\r\n    \"product\": \"{{product1}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff2}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff2}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.3 Get Current Version of Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff2'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff2\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product1}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product1}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.4 Get Current Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5 Set Tariff 2 to Product 2",
+			"item": [
+				{
+					"name": "5.1 Set Tariff 2 to Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product2'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product2\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 2\",\r\n    \"description\": \"New Tariff 2 description\",\r\n    \"product\": \"{{product2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff2}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff2}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5.2 Get Current Version of Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff2'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff2\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product1}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product1}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5.3 Get Current Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff2'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff2\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6 Roll Back Version of Product 1",
+			"item": [
+				{
+					"name": "6.1 Roll Back Version of Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product1}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product1}}",
+								"rollBackVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.2 Get Current Version of Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product1}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product1}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.3 Get Current Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff2'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff2\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.4 Get Previous Versions of Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response size is 1\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').with.lengthOf(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product1}}/getPreviousVersions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product1}}",
+								"getPreviousVersions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.5 Get Previous Versions of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response size is 2\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').with.lengthOf(2);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getPreviousVersions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getPreviousVersions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "7 Delete Product 2",
+			"item": [
+				{
+					"name": "7.1 Delete Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.2 Delete Product 2 [Check idempotency]",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.3 Get Current Version of Product 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product1}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product1}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.4 Get Current Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is empty\", function () {\r",
+									"    pm.expect(pm.response.text()).to.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "8 Roll Back Version of Product 2",
+			"item": [
+				{
+					"name": "8.1 Clean Tariff 2 Product",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 3\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(3);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is null\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 2 Updated\",\r\n    \"description\": \"New Tariff 2 Updated description\",\r\n    \"product\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff2}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff2}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.2 Set Tariff 2 to Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 4\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(4);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product2'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product2\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 2 Updated\",\r\n    \"description\": \"New Tariff 2 Updated description\",\r\n    \"product\": \"{{product2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff2}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff2}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.3 Delete Tariff 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff2}}/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff2}}",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.4 Roll Back Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 3\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(3);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff id is equal to 'tariff2'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff2\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"rollBackVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.5 Get Current Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 3\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(3);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff id is equal to 'tariff2'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff2\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.6 Get Previous Versions of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response size is 3\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').with.lengthOf(3);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getPreviousVersions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getPreviousVersions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "9 Set Tariff 1 to Product 2",
+			"item": [
+				{
+					"name": "9.1 Set Tariff 1 to Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 3\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(3);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product2'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product2\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 1\",\r\n    \"description\": \"New Tariff 1 description\",\r\n    \"product\": \"{{product2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff1}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff1}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9.1 Update Tariff 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 4\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(4);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product2'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product2\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 1 Updated 1\",\r\n    \"description\": \"New Tariff 1 Updated 1 description\",\r\n    \"product\": \"{{product2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff1}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff1}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9.2 Update Tariff 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 5\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(5);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product2'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product2\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 1 Updated 2\",\r\n    \"description\": \"New Tariff 1 Updated 2 description\",\r\n    \"product\": \"{{product2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff1}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff1}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9.3 Update Tariff 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 6\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(6);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff product is equal to 'product2'\", function () {\r",
+									"    pm.expect(pm.response.json().product).to.equal(pm.variables.get(\"product2\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tariff 1 Updated 3\",\r\n    \"description\": \"New Tariff 1 Updated 3 description\",\r\n    \"product\": \"{{product2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tariff/{{tariff1}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tariff",
+								"{{tariff1}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9.4 Get Current Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 7\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(7);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 6\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(6);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getCurrentVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getCurrentVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9.5 Get Previous Versions of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response size is 7\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').with.lengthOf(7);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/getPreviousVersions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"getPreviousVersions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "tariff1",
+			"value": ""
+		},
+		{
+			"key": "tariff2",
+			"value": ""
+		},
+		{
+			"key": "product1",
+			"value": ""
+		},
+		{
+			"key": "product2",
+			"value": ""
+		}
+	]
+}
