@@ -303,7 +303,7 @@
 					"response": []
 				},
 				{
-					"name": "2.3 Get Current Version of Product 1 Copy",
+					"name": "2.3 Get Current Version of Product 1",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -365,7 +365,7 @@
 					"response": []
 				},
 				{
-					"name": "2.4 Get Current Version of Product 2 Copy",
+					"name": "2.4 Get Current Version of Product 2",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1951,8 +1951,8 @@
 									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Product version is equal to 3\", function () {\r",
-									"    pm.expect(pm.response.json().version).to.equal(3);\r",
+									"pm.test(\"Product version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(2);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Tariff id is equal to 'tariff2'\", function () {\r",
@@ -2025,8 +2025,8 @@
 									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Product version is equal to 3\", function () {\r",
-									"    pm.expect(pm.response.json().version).to.equal(3);\r",
+									"pm.test(\"Product version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(2);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Tariff id is equal to 'tariff2'\", function () {\r",
@@ -2091,8 +2091,8 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response size is 3\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('array').with.lengthOf(3);\r",
+									"pm.test(\"Response size is 2\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').with.lengthOf(2);\r",
 									"});\r",
 									""
 								],
@@ -2438,8 +2438,8 @@
 									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Product version is equal to 7\", function () {\r",
-									"    pm.expect(pm.response.json().version).to.equal(7);\r",
+									"pm.test(\"Product version is equal to 6\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(6);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Tariff id is equal to 'tariff1'\", function () {\r",
@@ -2504,8 +2504,8 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response size is 7\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('array').with.lengthOf(7);\r",
+									"pm.test(\"Response size is 6\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').with.lengthOf(6);\r",
 									"});\r",
 									""
 								],
@@ -2528,6 +2528,505 @@
 								"product",
 								"{{product2}}",
 								"getPreviousVersions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "10 Roll Back Version of Product 2",
+			"item": [
+				{
+					"name": "10.1 Roll Back Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 5\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(5);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 5\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(5);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"rollBackVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10.2 Roll Back Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 4\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(4);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 4\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(4);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"rollBackVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10.3 Roll Back Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 3\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(3);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 3\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(3);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"rollBackVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10.4 Roll Back Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff id is equal to 'tariff2'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff2\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 2\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"rollBackVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10.5 Roll Back Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff id is equal to 'tariff1'\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.id).to.equal(pm.collectionVariables.get(\"tariff1\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff version is equal to 0\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tariff end date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff.endDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"rollBackVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10.6 Roll Back Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"rollBackVersion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10.7 Roll Back Version of Product 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									" "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product start date is not null\", function () {\r",
+									"    pm.expect(pm.response.json().startDate).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product end date is null\", function () {\r",
+									"    pm.expect(pm.response.json().endDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product version is equal to 1\", function () {\r",
+									"    pm.expect(pm.response.json().version).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product tariff is null\", function () {\r",
+									"    pm.expect(pm.response.json().tariff).to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/{{product2}}/rollBackVersion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"{{product2}}",
+								"rollBackVersion"
 							]
 						}
 					},
