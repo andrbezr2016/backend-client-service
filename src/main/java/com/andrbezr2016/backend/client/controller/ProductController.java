@@ -39,7 +39,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ProductResponse createProduct(@Validated(ProductRequest.Create.class) @RequestBody ProductRequest productRequest) {
+    public ProductResponse createProduct(@Validated @RequestBody ProductRequest productRequest) {
         log.info("Create new product");
         return productService.createProduct(productRequest);
     }

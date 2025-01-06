@@ -12,14 +12,11 @@ import java.util.UUID;
 @EqualsAndHashCode
 public class ProductRequest {
 
-    @NotNull(message = "Name must not be null", groups = {Create.class})
+    @NotNull(message = "Name must not be null")
     private String name;
-    @NotNull(message = "Type must not be null", groups = {Create.class})
+    @NotNull(message = "Type must not be null")
     private Product.ProductType type;
     private String description;
-    @NotNull(message = "Author must not be null", groups = {Create.class})
+    @NotNull(message = "Author must not be null")
     private UUID author;
-
-    public interface Create {
-    }
 }

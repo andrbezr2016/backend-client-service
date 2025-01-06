@@ -19,13 +19,13 @@ public class TariffController {
     private final TariffService tariffService;
 
     @PostMapping("/create")
-    public TariffResponse createTariff(@Validated(TariffRequest.Create.class) @RequestBody TariffRequest tariffRequest) {
+    public TariffResponse createTariff(@Validated @RequestBody TariffRequest tariffRequest) {
         log.info("Create new tariff for product with id: {}", tariffRequest.getProduct());
         return tariffService.createTariff(tariffRequest);
     }
 
     @PatchMapping("/{id}/update")
-    public TariffResponse updateTariff(@PathVariable("id") UUID id, @RequestBody TariffRequest tariffRequest) {
+    public TariffResponse updateTariff(@PathVariable("id") UUID id, @Validated @RequestBody TariffRequest tariffRequest) {
         log.info("Update tariff with id: {}", id);
         return tariffService.updateTariff(id, tariffRequest);
     }

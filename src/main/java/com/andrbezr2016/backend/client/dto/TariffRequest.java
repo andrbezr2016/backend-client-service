@@ -12,11 +12,8 @@ import java.util.UUID;
 @EqualsAndHashCode
 public class TariffRequest {
 
-    @NotNull(message = "Name must not be null", groups = {Create.class})
+    @NotNull(message = "Name must not be null")
     private String name;
     private String description;
     private UUID product;
-
-    public interface Create {
-    }
 }
