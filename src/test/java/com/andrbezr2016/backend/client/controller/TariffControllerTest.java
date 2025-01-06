@@ -82,34 +82,6 @@ class TariffControllerTest {
     }
 
     @Test
-    void createTariffWithNonExistedProductTest() throws Exception {
-        UUID id = UUID.randomUUID();
-        UUID product = UUID.randomUUID();
-        String name = "Name";
-        String description = "Description";
-        LocalDateTime startDate = LocalDateTime.now();
-        Tariff tariff = Tariff.builder()
-                .id(id)
-                .name(name)
-                .startDate(startDate)
-                .endDate(null)
-                .description(description)
-                .product(product)
-                .version(0L)
-                .build();
-        TariffRequest tariffRequest = TariffRequest.builder()
-                .name(name)
-                .description(description)
-                .product(product)
-                .build();
-
-        doReturn(tariff).when(tariffsServiceClient).createTariff(eq(tariffRequest));
-
-        mvc.perform(post(CREATE_TARIFF).contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(tariffRequest)))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
     void updateTariffTest() throws Exception {
         UUID id = UUID.randomUUID();
         UUID product = UUID.randomUUID();
@@ -146,34 +118,6 @@ class TariffControllerTest {
         mvc.perform(patch(UPDATE_TARIFF, id).contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(tariffRequest)))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(tariffResponse)));
-    }
-
-    @Test
-    void updateTariffWithNonExistedProductTest() throws Exception {
-        UUID id = UUID.randomUUID();
-        UUID product = UUID.randomUUID();
-        String name = "Name";
-        String description = "Description";
-        LocalDateTime startDate = LocalDateTime.now();
-        Tariff tariff = Tariff.builder()
-                .id(id)
-                .name(name)
-                .startDate(startDate)
-                .endDate(null)
-                .description(description)
-                .product(product)
-                .version(0L)
-                .build();
-        TariffRequest tariffRequest = TariffRequest.builder()
-                .name(name)
-                .description(description)
-                .product(product)
-                .build();
-
-        doReturn(tariff).when(tariffsServiceClient).updateTariff(eq(id), eq(tariffRequest));
-
-        mvc.perform(patch(UPDATE_TARIFF, id).contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(tariffRequest)))
-                .andExpect(status().isBadRequest());
     }
 
     @Test

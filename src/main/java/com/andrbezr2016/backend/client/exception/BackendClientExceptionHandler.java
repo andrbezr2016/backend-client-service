@@ -10,6 +10,8 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.stream.Collectors;
@@ -18,22 +20,22 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class BackendClientExceptionHandler {
 
-    @ExceptionHandler(ClientException.class)
-    public ResponseEntity<ErrorResponse> handleClientException(ClientException exception) {
+    @ExceptionHandler(HttpClientErrorException.class)
+    public ResponseEntity<ErrorResponse> handleClientException(HttpClientErrorException exception) {
         ErrorResponse errorResponse = new ErrorResponse();
-        errorResponse.setStatus(exception.getHttpStatus().value());
+        errorResponse.setStatus(exception.getStatusCode().value());
         errorResponse.setMessage(exception.getMessage());
         log.error(errorResponse.toString());
-        return ResponseEntity.status(exception.getHttpStatus()).body(errorResponse);
+        return ResponseEntity.status(exception.getStatusCode()).body(errorResponse);
     }
 
-    @ExceptionHandler(ServerException.class)
-    public ResponseEntity<ErrorResponse> handleServerException(ServerException exception) {
+    @ExceptionHandler(HttpServerErrorException.class)
+    public ResponseEntity<ErrorResponse> handleServerException(HttpClientErrorException exception) {
         ErrorResponse errorResponse = new ErrorResponse();
-        errorResponse.setStatus(exception.getHttpStatus().value());
+        errorResponse.setStatus(exception.getStatusCode().value());
         errorResponse.setMessage(exception.getMessage());
         log.error(errorResponse.toString(), exception);
-        return ResponseEntity.status(exception.getHttpStatus()).body(errorResponse);
+        return ResponseEntity.status(exception.getStatusCode()).body(errorResponse);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
