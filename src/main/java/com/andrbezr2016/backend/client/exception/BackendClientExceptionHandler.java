@@ -1,5 +1,6 @@
 package com.andrbezr2016.backend.client.exception;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import java.util.stream.Collectors;
 
 @Slf4j
+@Hidden
 @RestControllerAdvice
 public class BackendClientExceptionHandler {
 
