@@ -26,16 +26,16 @@ public class BackendClientExceptionHandler {
     public ResponseEntity<ErrorResponse> handleClientException(HttpClientErrorException exception) {
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setStatus(exception.getStatusCode().value());
-        errorResponse.setMessage(exception.getMessage());
+        errorResponse.setMessage(exception.getStatusText());
         log.error(errorResponse.toString());
         return ResponseEntity.status(exception.getStatusCode()).body(errorResponse);
     }
 
     @ExceptionHandler(HttpServerErrorException.class)
-    public ResponseEntity<ErrorResponse> handleServerException(HttpClientErrorException exception) {
+    public ResponseEntity<ErrorResponse> handleServerException(HttpServerErrorException exception) {
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setStatus(exception.getStatusCode().value());
-        errorResponse.setMessage(exception.getMessage());
+        errorResponse.setMessage(exception.getStatusText());
         log.error(errorResponse.toString(), exception);
         return ResponseEntity.status(exception.getStatusCode()).body(errorResponse);
     }

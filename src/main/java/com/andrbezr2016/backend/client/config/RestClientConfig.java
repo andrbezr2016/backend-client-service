@@ -1,5 +1,6 @@
 package com.andrbezr2016.backend.client.config;
 
+import com.andrbezr2016.backend.client.exception.BackendClientResponseErrorHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -14,11 +15,11 @@ public class RestClientConfig {
 
     @Bean(name = "productsServiceRestTemplate")
     public RestTemplate productsServiceRestTemplate(RestTemplateBuilder builder) {
-        return builder.rootUri(clientProperties.getProductsServiceUrl()).build();
+        return builder.rootUri(clientProperties.getProductsServiceUrl()).errorHandler(new BackendClientResponseErrorHandler()).build();
     }
 
     @Bean(name = "tariffsServiceRestTemplate")
     public RestTemplate tariffsServiceRestTemplate(RestTemplateBuilder builder) {
-        return builder.rootUri(clientProperties.getTariffsServiceUrl()).build();
+        return builder.rootUri(clientProperties.getTariffsServiceUrl()).errorHandler(new BackendClientResponseErrorHandler()).build();
     }
 }
