@@ -14,12 +14,55 @@ services:
       - postgresql_data:/var/lib/postgresql/data
     restart: always
     networks:
-      - my-network
+      - tarifficator-network
+  backend-client-service:
+    image: andrbezr2016/backend-client-service:1.0
+    container_name: backend-client-service
+    hostname: backend-client-service
+    ports:
+      - '8080:8080'
+    environment:
+      - PRODUCTS_SERVICE_PATH=http://products-service:8081
+      - TARIFFS_SERVICE_PATH=http://tariffs-service:8082
+    restart: always
+    networks:
+      - tarifficator-network
+  products-service:
+    image: andrbezr2016/products-service:1.0
+    container_name: products-service
+    hostname: products-service
+    ports:
+      - '8081:8081'
+    environment:
+      - POSTGRES_PATH=jdbc:postgresql://postgres:5432/products
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USERNAME=postgres
+    depends_on:
+      - postgres
+    restart: always
+    networks:
+      - tarifficator-network
+  tariffs-service:
+    image: andrbezr2016/tariffs-service:1.0
+    container_name: tariffs-service
+    hostname: tariffs-service
+    ports:
+      - '8082:8082'
+    environment:
+      - POSTGRES_PATH=jdbc:postgresql://postgres:5432/tariffs
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USERNAME=postgres
+      - PRODUCTS_SERVICE_PATH=http://products-service:8081
+    depends_on:
+      - postgres
+    restart: always
+    networks:
+      - tarifficator-network
 
 volumes:
   postgresql_data:
     driver: local
 
 networks:
-  my-network:
+  tarifficator-network:
     driver: bridge

@@ -10,5 +10,5 @@ logging:
     root: INFO
 backend-client-service:
   client:
-    products-service-url: http://localhost:8081
-    tariffs-service-url: http://localhost:8082
+    products-service-url: ${PRODUCTS_SERVICE_PATH:http://localhost:8081}
+    tariffs-service-url: ${TARIFFS_SERVICE_PATH:http://localhost:8082}
