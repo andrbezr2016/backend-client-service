@@ -2,19 +2,13 @@ package com.andrbezr2016.backend.client.service;
 
 import com.andrbezr2016.backend.client.client.ProductsServiceClient;
 import com.andrbezr2016.backend.client.client.TariffsServiceClient;
-import com.andrbezr2016.backend.client.dto.Product;
-import com.andrbezr2016.backend.client.dto.ProductRequest;
-import com.andrbezr2016.backend.client.dto.ProductResponse;
-import com.andrbezr2016.backend.client.dto.Tariff;
+import com.andrbezr2016.backend.client.dto.*;
 import com.andrbezr2016.backend.client.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
@@ -31,9 +25,10 @@ public class ProductService {
 
     public Collection<ProductResponse> getPreviousVersions(UUID id) {
         Collection<Product> productCollection = productsServiceClient.getPreviousVersions(id);
+        Map<TariffId, Tariff> tariffMap = getTariffsByProduct(id);
         List<ProductResponse> productResponseList = new ArrayList<>();
         for (Product product : productCollection) {
-            ProductResponse productResponse = productMapper.toResponse(product, getTariffByProduct(product));
+            ProductResponse productResponse = productMapper.toResponse(product, tariffMap.get(TariffId.builder().id(product.getTariff()).version(product.getVersion()).build()));
             productResponseList.add(productResponse);
         }
         return productResponseList;
@@ -56,6 +51,15 @@ public class ProductService {
     public ProductResponse rollBackVersion(UUID id) {
         Product product = productsServiceClient.rollBackVersion(id);
         return productMapper.toResponse(product, getTariffByProduct(product));
+    }
+
+    private Map<TariffId, Tariff> getTariffsByProduct(UUID id) {
+        Map<TariffId, Tariff> tariffMap = new HashMap<>();
+        Collection<Tariff> tariffList = tariffsServiceClient.getTariffsByProduct(id);
+        for (Tariff tariff : tariffList) {
+            tariffMap.put(TariffId.builder().id(tariff.getId()).version(tariff.getVersion()).build(), tariff);
+        }
+        return tariffMap;
     }
 
     private Tariff getTariffByProduct(Product product) {

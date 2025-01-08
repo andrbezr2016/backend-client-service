@@ -24,9 +24,9 @@ public class TariffsServiceClient {
         return restTemplate.getForObject("/tariff/{id}?version={version}", Tariff.class, id, version);
     }
 
-    public Collection<Tariff> getTariffs(Collection<UUID> ids) {
-        return restTemplate.exchange("/tariff/getAllByIds?ids={ids}", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Tariff>>() {
-        }, ids).getBody();
+    public Collection<Tariff> getTariffsByProduct(UUID product) {
+        return restTemplate.exchange("/tariff/byProduct/{product}", HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Tariff>>() {
+        }, product).getBody();
     }
 
     public Tariff createTariff(TariffRequest tariffRequest) {
