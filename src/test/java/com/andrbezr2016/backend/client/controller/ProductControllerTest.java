@@ -136,7 +136,7 @@ class ProductControllerTest {
         List<ProductResponse> productResponseList = List.of(productResponse);
 
         doReturn(productList).when(productsServiceClient).getPreviousVersions(eq(id));
-        doReturn(tariff).when(tariffsServiceClient).getTariff(eq(tariffId), eq(tariffVersion));
+        doReturn(List.of(tariff)).when(tariffsServiceClient).getTariffsByProduct(eq(id));
 
         mvc.perform(get(GET_PREVIOUS_VERSIONS, id))
                 .andExpect(status().isOk())
